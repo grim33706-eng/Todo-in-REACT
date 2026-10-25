@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/Todo-in-REACT/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Taskflow — a calm, beautiful place to plan your day." />
+    <meta name="theme-color" content="#f4f5fb" />
+    <title>Taskflow · Todo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Apply the saved (or system) theme before first paint to avoid a flash.
+      (function () {
+        var theme;
+        try { theme = JSON.parse(localStorage.getItem('taskflow.theme')); } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+    <style>.splash{background:#f4f5fb;place-items:center;min-height:100vh;display:grid}[data-theme=dark] .splash{background:#0b0d17}.splash-mark{background:linear-gradient(135deg,#4f46e5,#7c3aed);border-radius:16px;width:52px;height:52px;animation:1.2s ease-in-out infinite splash-pulse;box-shadow:0 12px 32px -8px #4f46e599}@keyframes splash-pulse{0%,to{opacity:.75;transform:scale(.92)rotate(-6deg)}50%{opacity:1;transform:scale(1)rotate(6deg)}}@media (prefers-reduced-motion:reduce){.splash-mark{animation:none}}</style>
+    <script type="module" crossorigin src="/Todo-in-REACT/assets/index-aTacwcIl.js"></script>
+    <link rel="stylesheet" crossorigin href="/Todo-in-REACT/assets/index-CO_hBul5.css">
+  </head>
+  <body>
+    <div id="root">
+      <div class="splash" role="status" aria-label="Loading Taskflow"><div class="splash-mark"></div></div>
+    </div>
+  </body>
+</html>
