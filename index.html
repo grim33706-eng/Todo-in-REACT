@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Taskflow — a calm, beautiful place to plan your day." />
+    <meta name="theme-color" content="#f4f5fb" />
+    <title>Taskflow · Todo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Apply the saved (or system) theme before first paint to avoid a flash.
+      (function () {
+        var theme;
+        try { theme = JSON.parse(localStorage.getItem('taskflow.theme')); } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+    <style>
+      /* Initial splash shown until React mounts and replaces #root's content. */
+      .splash { min-height: 100vh; display: grid; place-items: center; background: #f4f5fb; }
+      [data-theme='dark'] .splash { background: #0b0d17; }
+      .splash-mark {
+        width: 52px; height: 52px; border-radius: 16px;
+        background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        box-shadow: 0 12px 32px -8px rgba(79, 70, 229, 0.6);
+        animation: splash-pulse 1.2s ease-in-out infinite;
+      }
+      @keyframes splash-pulse {
+        0%, 100% { transform: scale(0.92) rotate(-6deg); opacity: 0.75; }
+        50% { transform: scale(1) rotate(6deg); opacity: 1; }
+      }
+      @media (prefers-reduced-motion: reduce) { .splash-mark { animation: none; } }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="splash" role="status" aria-label="Loading Taskflow"><div class="splash-mark"></div></div>
+    </div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
